@@ -6,7 +6,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -30,18 +30,19 @@ public class Tour {
     @Column(name = "duration", nullable = false)
     private int duration;
 
-    @Column(name = "location", nullable = false)
-    private String location;
+    @ManyToOne
+    @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
+    private Location location;
 
     @Column(name = "startDate", nullable = false)
     @CreationTimestamp
-    private Date startDate;
+    private LocalDateTime startDate;
 
     @Column(name = "endDate", unique = false)
     @CreationTimestamp
-    private Date endDate;
+    private LocalDateTime endDate;
 
-    public Tour(Integer id, String  tourName, String description, double price, int duration, String location) {
+    public Tour(Integer id, String tourName, String description, double price, int duration, Location location) {
         this.tourName = tourName;
         this.description = description;
         this.price = price;

@@ -37,4 +37,8 @@ public class Flight {
         this.destination = destination;
         this.ticketPrice = ticketPrice;
     }
+
+    public double getPrice() {
+        return this.ticketPrice = ticketPrice;
+    }
 }

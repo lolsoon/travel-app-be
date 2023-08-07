@@ -1,4 +1,4 @@
-package com.travelapp.service;
+package com.travelapp.service.interfaceService;
 
 import com.travelapp.entity.User;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -25,6 +25,7 @@ public class Location {
     @Column(name = "image_url")
     private String imageUrl;
 
+
     public Location(Integer id, String locationName, String description) {
         this.id = id;
         this.locationName = locationName;

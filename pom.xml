@@ -63,6 +63,11 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.5.6.Final</version> <!-- Thay đổi phiên bản theo yêu cầu -->
+		</dependency>
 	</dependencies>
 
 	<build>

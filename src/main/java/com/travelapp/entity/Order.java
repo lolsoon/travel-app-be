@@ -45,4 +45,10 @@ public class Order {
 
     private double totalAmount;
     private Date orderDate;
+
+    public double calculateTotalAmount() {
+        double flightPrice = flight.getPrice();
+        double hotelPrice = hotel.getPrice();
+        return flightPrice + hotelPrice;
+    }
 }

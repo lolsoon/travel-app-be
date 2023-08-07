@@ -1,5 +1,6 @@
 package com.travelapp.dto;
 
+import com.travelapp.entity.Location;
 import com.travelapp.entity.Tour;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ public class TourDTO {
     private String description;
     private double price;
     private int duration;
-    private String location;
+    private Location location;
 
     public Tour toEntity() {
         return new Tour(id,tourName,description,price,duration,location);
