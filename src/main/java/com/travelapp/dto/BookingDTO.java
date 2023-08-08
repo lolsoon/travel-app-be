@@ -1,6 +1,6 @@
 package com.travelapp.dto;
 
-import com.travelapp.entity.OrderStatus;
+import com.travelapp.entity.BookingStatus;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,21 +12,19 @@ import java.util.Date;
 @NoArgsConstructor
 public class OrderDTO {
     private Integer id;
-    private OrderStatus status;
+    private BookingStatus status;
     private FlightDTO flight;
     private HotelDTO hotel;
-    private LocationDTO location;
     private UserDTO user;
     private PaymentDTO payment;
     private double totalAmount;
     private Date orderDate;
 
-    public OrderDTO(Integer id, OrderStatus status, FlightDTO flight, HotelDTO hotel, LocationDTO location, UserDTO user, PaymentDTO payment, double totalAmount, Date orderDate) {
+    public OrderDTO(Integer id, BookingStatus status, FlightDTO flight, HotelDTO hotel, UserDTO user, PaymentDTO payment, double totalAmount, Date orderDate) {
         this.id = id;
         this.status = status;
         this.flight = flight;
         this.hotel = hotel;
-        this.location = location;
         this.user = user;
         this.payment = payment;
         this.totalAmount = totalAmount;

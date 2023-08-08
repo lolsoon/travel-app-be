@@ -1,5 +1,6 @@
-package com.travelapp.entity.payment;
+package com.travelapp.entity;
 
+import com.travelapp.entity.payment.Payment;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -7,20 +8,21 @@ import lombok.Setter;
 import javax.persistence.*;
 
 
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-public class VNPayment {
+public class MomoPayment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "vnpay_transaction_id")
-    private String vnpayTransactionId;
+    @Column(name = "momo_transaction_id")
+    private String momoTransactionId;
 
-    @Column(name = "vnpay_bank_code")
-    private String vnpayBankCode;
+    @Column(name = "momo_phone_number")
+    private String momoPhoneNumber;
 
     @OneToOne
     @JoinColumn(name = "payment_id")
