@@ -1,23 +1,42 @@
 package com.travelapp.repository;
 
 import com.travelapp.entity.Booking;
+import com.travelapp.entity.Tour;
+import com.travelapp.entity.User;
+import com.travelapp.form.BookingUpdateForm;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface IBookingRepository extends JpaRepository<Booking, Integer> {
+public interface IBookingRepository extends JpaRepository<Booking, Integer>, JpaSpecificationExecutor<Booking> {
 
-    //  Tìm kiếm Booking theo số lượng người tham gia
-    List<Booking> findByNumberOfPeople(int numberOfPeople);
+    //  Tìm kiếm Booking theo khoảng thơi gian
+    List<Booking> findByBookingDateBetween(LocalDateTime bookingStart, LocalDateTime bookingEnd);
 
-    //  Tìm kiếm Booking theo ngày đặt
-    List<Booking> findByBookingDate(Date bookingDate);
+    //    Booking findBookingById(int bookingId);
+    @Query("SELECT b FROM Booking b WHERE b.user.id = :userId")
+    List<Booking> findByUserId(@Param("userId") Integer userId);
 
-    //  Tìm kiếm Booking theo tổng chi phí
-    List<Booking> findByTotalCost(double totalCost);
+    @Query("SELECT b FROM Booking b WHERE b.bookingStatus = :bookingStatus")
+            List<Booking> findBookingByStatus(@Param("bookingStatus") Enum bookingStatus);
+    //    List<Booking> findByTourId(Integer tourId);
+//    List<Booking> findByFlightId(Integer flightId);
+//    List<Booking> findByHotelId(Integer hotelId);
+//    List<Booking> findBookingByStatus(Booking.BookingStatus bookingStatus);
 
-    List<Booking> getAllBookings();
+//    Page<Booking> findAllBookings(Specification<Booking> buildWhere, Pageable pageable);
+
+    //    void createBooking(Booking booking);
+//    void updateBooking(BookingUpdateForm bookingUpdateForm);
+//    void deleteBooking(Integer bookingId);
 }

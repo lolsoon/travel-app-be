@@ -1,11 +1,21 @@
 package com.travelapp.dto;
 
-import java.util.Date;
+import com.travelapp.entity.Payment;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PaymentDTO {
-    private Integer id;
+    private Integer paymentId;
+    private Integer bookingId;
+    private Integer userId;
     private double amount;
-    private Date paymentDate;
-    private MomoPaymentDTO momoPaymentDTO;
-    private UserDTO userDTO;
+    private Payment.PaymentMethod paymentMethod;
+    private Payment.PaymentStatus paymentStatus;
+    private LocalDateTime paymentDate;
 }

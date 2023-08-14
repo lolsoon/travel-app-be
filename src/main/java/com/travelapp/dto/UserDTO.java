@@ -9,13 +9,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class UserDTO {
-    private Integer id;
+    private Integer userId;
     private String userName;
     private String email;
     private String password;
     private String phoneNumber;
     private String address;
-    public User toEntity() {
-        return new User(id,userName, email, password,phoneNumber,address);
-    }
+    private String cardId;
+    private User.UserRole userRole;
 }

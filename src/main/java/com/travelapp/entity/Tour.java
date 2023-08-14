@@ -7,18 +7,20 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
+@Table(name = "tours")
 public class Tour {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
-    private Integer id;
+    @Column(name = "tour_id", unique = true, nullable = false)
+    private Integer tourId;
 
-    @Column(name = "tourName", nullable = false)
+    @Column(name = "tour_name", nullable = false)
     private String tourName;
 
     @Column(name = "description", nullable = false)
@@ -27,27 +29,24 @@ public class Tour {
     @Column(name = "price", nullable = false)
     private double price;
 
+    @Column(name = "sale_price")
+    private double salePrice;
+
     @Column(name = "duration", nullable = false)
     private int duration;
 
-    @ManyToOne
-    @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
-    private Location location;
+    @Column(name = "thumbnail_url",nullable = false)
+    private String thumbnailUrl;
 
-    @Column(name = "startDate", nullable = false)
+    @Column(name = "destination", nullable = false)
+    private String destination;
+
+    @Column(name = "start_date", nullable = false)
     @CreationTimestamp
     private LocalDateTime startDate;
 
-    @Column(name = "endDate", unique = false)
+    @Column(name = "end_date", nullable = false)
     @CreationTimestamp
     private LocalDateTime endDate;
-
-    public Tour(Integer id, String tourName, String description, double price, int duration, Location location) {
-        this.tourName = tourName;
-        this.description = description;
-        this.price = price;
-        this.duration = duration;
-        this.location = location;
-    }
 
 }

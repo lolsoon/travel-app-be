@@ -13,11 +13,11 @@ public interface IFlightRepository extends JpaRepository<Flight, Integer> {
 
     Flight findFlightByCode (String flightCode);
 
-    List<Flight> findByDepartureDateGreaterThanEqual(LocalDateTime departureStart);
+    List<Flight> findByDestinationAndDepartureDate(String destination,LocalDateTime departureDate);
 
     List<Flight> findByDestination (String destination);
 
-    List<Flight> findByPrice (double ticketPrice);
+    List<Flight> findByPrice (double price);
 
     List<Flight> getAllFlights();
 

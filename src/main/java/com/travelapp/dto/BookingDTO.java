@@ -1,33 +1,26 @@
 package com.travelapp.dto;
 
-import com.travelapp.entity.BookingStatus;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class OrderDTO {
-    private Integer id;
-    private BookingStatus status;
-    private FlightDTO flight;
-    private HotelDTO hotel;
-    private UserDTO user;
-    private PaymentDTO payment;
-    private double totalAmount;
-    private Date orderDate;
+public class BookingDTO {
 
-    public OrderDTO(Integer id, BookingStatus status, FlightDTO flight, HotelDTO hotel, UserDTO user, PaymentDTO payment, double totalAmount, Date orderDate) {
-        this.id = id;
-        this.status = status;
-        this.flight = flight;
-        this.hotel = hotel;
-        this.user = user;
-        this.payment = payment;
-        this.totalAmount = totalAmount;
-        this.orderDate = orderDate;
-    }
+    private Integer bookingId;
+    private String fullName;
+    private String email;
+    private String phoneNumber;
+    private String address;
+    private double totalAmount;
+    private int numberOfPeople;
+    private LocalDateTime bookingDate;
+    private String note;
+    private Integer ticketId;
+
 }

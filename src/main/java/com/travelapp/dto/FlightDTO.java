@@ -11,14 +11,13 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 public class FlightDTO {
-    private Integer id;
+    private Integer flightId;
     private String flightCode;
-    private LocalDateTime departureStart;
+    private LocalDateTime departureDate;
+    private LocalDateTime arrivalDate;
     private String destination;
-    private double ticketPrice;
+    private String airLineName;
+    private double price;
 
 
-    public Flight toEntity() {
-        return new Flight(id,flightCode,departureStart,destination,ticketPrice);
-    }
 }

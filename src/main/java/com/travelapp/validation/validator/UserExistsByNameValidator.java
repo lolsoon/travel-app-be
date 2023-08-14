@@ -14,6 +14,6 @@ public class UserExistsByNameValidator implements ConstraintValidator<UserExists
 
     @Override
     public boolean isValid(String userName, ConstraintValidatorContext constraintValidatorContext) {
-        return userRepository.existsByUserName(userName);
+        return userRepository.existsUserByUserName(userName);
     }
 }

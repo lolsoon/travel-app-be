@@ -1,28 +1,30 @@
 package com.travelapp.repository;
-import com.travelapp.entity.payment.MomoPayment;
-import com.travelapp.entity.payment.Payment;
-import com.travelapp.entity.payment.VNPayment;
-import org.springframework.data.jpa.repository.Query;
+import com.travelapp.entity.Payment;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface IPaymentRepository {
+public interface IPaymentRepository extends JpaRepository<Payment, Integer> {
 
     // Tìm kiếm Payment bằng user_id
     List<Payment> findByUserId(Integer userId);
 
-    // Tìm kiếm Payment bằng payment_date
-    List<Payment> findByPaymentDate(Date paymentDate);
+    // tìm kiếm bằng phương thức thanh toán
+    List<Payment> findByPaymentMethod(Payment.PaymentMethod paymentMethod);
 
-    // Tìm kiếm Payment bằng momoPayment
-    @Query("SELECT p FROM Payment p WHERE p.momoPayment = ?1")
-    List<Payment> findByMomoPayment(MomoPayment momoPayment);
+    List<Payment> findByPaymentDateBetween(Date startDate, Date endDate);
 
-    // Tìm kiếm Payment bằng vnPayment
-    @Query("SELECT p FROM Payment p WHERE p.vnpayPayment = ?1")
-    List<Payment> findByVNPayment(VNPayment vnPayment);
+    List<Payment> getAllPayments();
+
+//    List<Payment> findByUserAndAmountGreaterThan(User user, double amount);
+//
+//    List<Payment> findByUserAndPaymentDateBetween(User user, Date startDate, Date endDate);
+
+//    double getTotalPaymentsByUserId(Integer userId);
+//
+//    double getTotalPaymentsByUserAndPaymentDateBetween(User user, Date startDate, Date endDate);
 }
 

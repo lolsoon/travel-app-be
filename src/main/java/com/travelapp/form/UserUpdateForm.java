@@ -37,5 +37,5 @@ public class UserUpdateForm {
     private String lastName;
 
     @NotNull(message = "{UserForm.role.NotNull}")
-    private User.Role role;
+    private User.UserRole userRole;
 }

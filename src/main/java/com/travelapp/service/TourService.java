@@ -1,6 +1,5 @@
 package com.travelapp.service;
 
-import com.travelapp.entity.Location;
 import com.travelapp.entity.Tour;
 import com.travelapp.repository.ITourRepository;
 import com.travelapp.service.interfaceService.ITourService;
@@ -8,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+@Service
 
 public class TourService implements ITourService {
     @Autowired
@@ -30,7 +31,7 @@ public class TourService implements ITourService {
 
     @Override
     public List<Tour> getAllTours() {
-        return tourRepository.findAll();
+        return tourRepository.getAllTours();
     }
 
     @Override
@@ -38,10 +39,6 @@ public class TourService implements ITourService {
         return tourRepository.findTourById(tourId);
     }
 
-    @Override
-    public List<Tour> findTourByLocation(Location location) {
-        return tourRepository.findTourByLocation(location);
-    }
 
     @Override
     public List<Tour> findTourByDuration(int duration) {
@@ -49,17 +46,16 @@ public class TourService implements ITourService {
     }
 
     @Override
-    public List<Tour> findTourByPrice(double price) {
-        return tourRepository.findTourByPrice(price);
+    public List<Tour> findTourByPriceRange(double minPrice, double maxPrice) {
+        return tourRepository.findByPriceBetween(minPrice, maxPrice);
     }
-
     @Override
     public List<Tour> findTourByStartDate(LocalDateTime startDate) {
         return tourRepository.findTourByStartDate(startDate);
     }
 
     @Override
-    public void updateTour(Tour tour) {
+    public void updateTour(int id, Tour tour) {
         // Lấy thông tin người dùng hiện tại từ SecurityContextHolder
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !authentication.isAuthenticated()) {
@@ -77,7 +73,7 @@ public class TourService implements ITourService {
     @Override
     public void deleteTour(Integer tourId) {
         // check exists tour ?
-        Tour tour = tourRepository.findTourById(tourId);
+        Tour tour = tourRepository.findById(tourId).orElse(null);
         if (tour == null) {
             throw new IllegalArgumentException("Tour không tồn tại!");
         }

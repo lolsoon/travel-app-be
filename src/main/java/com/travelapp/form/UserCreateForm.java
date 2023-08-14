@@ -1,7 +1,6 @@
 package com.travelapp.form;
 
 import com.travelapp.entity.User;
-import com.travelapp.validation.anotation.UserExistsByName;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +15,6 @@ import javax.validation.constraints.NotNull;
 public class UserCreateForm extends User {
     @NotBlank(message = "{UserForm.userName.NotBlank}")
     @Length(max = 50, message = "{UserForm.userName.Length}")
-    @UserExistsByName
     private String userName;
 
     @NotBlank(message = "{UserForm.email.NotBlank}")
@@ -36,5 +34,5 @@ public class UserCreateForm extends User {
     private String lastName;
 
     @NotNull(message = "{UserForm.role.NotNull}")
-    private User.Role role = User.Role.EMPLOYEE;
+    private UserRole userRole = getUserRole();
 }

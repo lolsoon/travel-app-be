@@ -2,14 +2,14 @@ package com.travelapp.dto;
 
 import com.travelapp.entity.Hotel;
 
+import java.math.BigDecimal;
+
 public class HotelDTO {
-    private Integer id;
+    private Integer hotelId;
     private String hotelName;
     private String address;
-    private String phoneHotelNumber;
-    private double price;
+    private String phoneNumber;
+    private BigDecimal pricePerNight;
+    private BigDecimal totalPrice;
 
-    public Hotel toEntity() {
-        return new Hotel(id,hotelName,address,phoneHotelNumber,price);
-    }
 }

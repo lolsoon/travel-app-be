@@ -1,10 +1,8 @@
 package com.travelapp.service.interfaceService;
 
-import com.travelapp.entity.Location;
 import com.travelapp.entity.Tour;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 public interface ITourService {
@@ -14,17 +12,15 @@ public interface ITourService {
 
     Tour findTourById(Integer tourId);
 
-    List<Tour> findTourByLocation(Location location);
-
     List<Tour> findTourByDuration(int duration);
 
-    List<Tour> findTourByPrice(double price);
+    List<Tour> findTourByPriceRange(double minPrice, double maxPrice);
 
 //    boolean existsByTourName( String tourName);
 
     List<Tour> findTourByStartDate(LocalDateTime startDate);
 
-    void updateTour(Tour tour);
+    void updateTour(int id, Tour tour);
 
     void deleteTour(Integer tourId);
 }

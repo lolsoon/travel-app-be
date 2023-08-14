@@ -6,43 +6,52 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
+@Table(name = "hotels")
 public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
-    private Integer id;
+    @Column(name = "hotel_id", unique = true, nullable = false)
+    private Integer hotelId;
 
-    @Column(name ="hotelName",nullable = false)
+    @Column(name ="hotel_name",nullable = false)
     private String hotelName;
 
     @Column(name ="address",nullable = false)
     private String address;
 
-    @Column(name = "phoneHotelNumber", nullable = false)
+    @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
-    @Column(name ="checkInDate",nullable = false)
+    @Column(name ="check_in_date",nullable = false)
     @CreationTimestamp
-    private Date checkInDate;
+    private LocalDateTime checkInDate;
 
-    @Column(name ="checkOutDate",nullable = false)
+    @Column(name ="check_out_date",nullable = false)
     @CreationTimestamp
-    private Date checkOutDate;
+    private LocalDateTime checkOutDate;
 
-    @Column(name ="price",nullable = false)
-    private double price;
+    @Column(name ="price_per_night",nullable = false)
+    private Double pricePerNight;
 
-    public Hotel(Integer id, String hotelName, String address, String phoneNumber, double price) {
-        this.id = id;
+    @Column(name = "price_total")
+    private Double totalPrice;
+
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
+    private List<Ticket> tickets;
+    public Hotel(Integer hotelId, String hotelName, String address, String phoneNumber, Double pricePerNight, Double totalPrice) {
+        this.hotelId = hotelId;
         this.hotelName = hotelName;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.price = price;
+        this.pricePerNight = pricePerNight;
+        this.totalPrice = totalPrice;
     }
 }

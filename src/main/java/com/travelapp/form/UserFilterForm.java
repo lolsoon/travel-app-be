@@ -6,9 +6,11 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class UserFilterForm {
+public class UserFilterForm extends FormBase{
     private String search;
-    private User.Role role;
+    private User.UserRole userRole;
     private Integer minId;
     private Integer maxId;
+    private String phoneNumber;
+    private String cardId;
 }
