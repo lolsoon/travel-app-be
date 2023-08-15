@@ -21,24 +21,27 @@ public class Hotel {
     @Column(name = "hotel_id", unique = true, nullable = false)
     private Integer hotelId;
 
-    @Column(name ="hotel_name",nullable = false)
+    @Column(name = "hotel_name", nullable = false)
     private String hotelName;
 
-    @Column(name ="address",nullable = false)
+    @Column(name = "address", nullable = false)
     private String address;
 
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
-    @Column(name ="check_in_date",nullable = false)
+    @Column(name = "thumbnail_urls", nullable = false)
+    private List<Hotel> thumbnailUrls;
+
+    @Column(name = "check_in_date", nullable = false)
     @CreationTimestamp
     private LocalDateTime checkInDate;
 
-    @Column(name ="check_out_date",nullable = false)
+    @Column(name = "check_out_date", nullable = false)
     @CreationTimestamp
     private LocalDateTime checkOutDate;
 
-    @Column(name ="price_per_night",nullable = false)
+    @Column(name = "price_per_night", nullable = false)
     private Double pricePerNight;
 
     @Column(name = "price_total")
@@ -46,6 +49,7 @@ public class Hotel {
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
     private List<Ticket> tickets;
+
     public Hotel(Integer hotelId, String hotelName, String address, String phoneNumber, Double pricePerNight, Double totalPrice) {
         this.hotelId = hotelId;
         this.hotelName = hotelName;

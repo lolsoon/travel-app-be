@@ -21,6 +21,5 @@ public class BookingDTO {
     private int numberOfPeople;
     private LocalDateTime bookingDate;
     private String note;
-    private Integer ticketId;
-
+    private TicketDTO ticket;
 }

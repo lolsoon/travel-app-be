@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,6 +19,6 @@ public class FlightDTO {
     private String destination;
     private String airLineName;
     private double price;
-
+    private List<TicketDTO> tickets;
 
 }

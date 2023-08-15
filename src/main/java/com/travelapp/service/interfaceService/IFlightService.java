@@ -12,6 +12,8 @@ public interface IFlightService {
 
     List<Flight> getAllFlights();
 
+    List<Flight> getFlightsByAirline();
+
     Flight findFlightById(Integer flightId);
 
     Flight findFlightByCode(String flightCode);

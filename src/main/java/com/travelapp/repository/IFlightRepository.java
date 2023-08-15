@@ -20,5 +20,6 @@ public interface IFlightRepository extends JpaRepository<Flight, Integer> {
     List<Flight> findByPrice (double price);
 
     List<Flight> getAllFlights();
+    List<Flight> getFlightsByAirline();
 
 }

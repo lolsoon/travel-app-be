@@ -1,2 +1,4 @@
-package com.travelapp.controller;public class TicketController {
+package com.travelapp.controller;
+
+public class TicketController {
 }

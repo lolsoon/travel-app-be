@@ -35,8 +35,8 @@ public class Tour {
     @Column(name = "duration", nullable = false)
     private int duration;
 
-    @Column(name = "thumbnail_url",nullable = false)
-    private String thumbnailUrl;
+    @Column(name = "thumbnail_urls",nullable = false)
+    private List<Tour> thumbnailUrls;
 
     @Column(name = "destination", nullable = false)
     private String destination;

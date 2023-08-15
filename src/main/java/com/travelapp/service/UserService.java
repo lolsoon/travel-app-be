@@ -79,7 +79,7 @@ public class UserService implements IUserService {
         return org.springframework.security.core.userdetails.User
                 .withUsername(user.getUserName())
                 .password(user.getPassword())
-                .roles(user.getRole().toString())
+                .roles(user.getUserRole().toString())
                 .build();
     }
 

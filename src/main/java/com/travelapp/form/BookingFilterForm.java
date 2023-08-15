@@ -1,24 +1,21 @@
 package com.travelapp.form;
 
-import com.travelapp.entity.Booking;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Setter
 @Getter
 @NoArgsConstructor
 public class BookingFilterForm {
     private String search;
-    private Integer userId;
-    private Booking.BookingStatus bookingStatus;
+    private String email;
+    private String phoneNumber;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate minBookingDate;
+    private LocalDateTime minBookingDate;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate maxBookingDate;
-
-
+    private LocalDateTime maxBookingDate;
 }

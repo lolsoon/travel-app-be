@@ -23,8 +23,8 @@ public class FlightService implements IFlightService {
     @Override
     public void createFlight(FlightDTO flightDTO) {
 
-        Flight  flight = new Flight();
-        BeanUtils.copyProperties(flightDTO,flight);
+        Flight flight = new Flight();
+        BeanUtils.copyProperties(flightDTO, flight);
         flight.setPrice(flightDTO.getPrice());
         flight.setDestination(flightDTO.getDestination());
         flight.setDepartureDate(flightDTO.getDepartureDate());
@@ -38,6 +38,12 @@ public class FlightService implements IFlightService {
     public List<Flight> getAllFlights() {
         return flightRepository.getAllFlights();
     }
+
+    @Override
+    public List<Flight> getFlightsByAirline() {
+        return flightRepository.getFlightsByAirline();
+    }
+
 
     @Override
     public Flight findFlightById(Integer flightId) {

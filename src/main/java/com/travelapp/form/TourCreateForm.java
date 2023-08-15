@@ -6,9 +6,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
-public class TourCreateForm extends FormBase{
-    @NotBlank(message = "{TourForm.name.NotBlank}")
-    @Length(max = 1023, message = "{TourForm.name.Length}")
+public class TourCreateForm{
+    @NotBlank(message = "{TourForm.tourName.NotBlank}")
+    @Length(max = 1023, message = "{TourForm.tourName.Length}")
     private String tourName;
 
     @NotBlank(message = "{TourForm.description.NotBlank}")

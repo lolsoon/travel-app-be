@@ -1,12 +1,10 @@
 package com.travelapp.form;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -19,7 +17,7 @@ public class TourFilterForm extends FormBase {
     private Double maxPrice;
     private String destination;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate startDate;
+    private LocalDateTime startDate;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate endDate;
+    private LocalDateTime endDate;
 }

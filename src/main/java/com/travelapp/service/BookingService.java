@@ -63,16 +63,16 @@ public class BookingService implements IBookingService {
 //        return bookingRepository.findByHotelId(hotelId);
 //    }
 
-    @Override
-    public List<Booking> findBookingByStatus(Booking.BookingStatus bookingStatus) {
-        return bookingRepository.findBookingByStatus(bookingStatus);
-    }
+//    @Override
+//    public List<Booking> findBookingByStatus(Booking bookingStatus) {
+//        return bookingRepository.findBookingByStatus(bookingStatus);
+//    }
 
 
     @Override
     public void createBooking(Booking booking) {
         // Kiểm tra xem thông tin khách hàng đã đủ chưa
-        if (!isCustomerInfoComplete(booking.getUser())) {
+        if (!isCustomerInfoComplete(booking.getFullName())) {
             throw new IllegalArgumentException("Thông tin của khách hàng chưa đầy đủ");
         }
         bookingRepository.save(booking);
